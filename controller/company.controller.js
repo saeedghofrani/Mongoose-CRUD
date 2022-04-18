@@ -1,5 +1,6 @@
 // wrapper contain trycatch for error handling
 const safeCall = require('../utils/safeCall.utils');
+const createCompany = require('../services/createcompany.service');
 const Company = require('../model/company.model');
 
 const _get = safeCall(async (request, response, _next) => {
@@ -11,9 +12,9 @@ const _get = safeCall(async (request, response, _next) => {
 
 const _post = safeCall(async (request, response, _next) => {
 
-    const data = { company_name, value } = request.body;
-    await Company.create(data);
-    return response.json({ path: request.originalUrl, success: true, result: 'Company created' });
+    const { company_name, value } = request.body;
+    const company = await createCompany(company_name, value);
+    return response.json({ path: request.originalUrl, success: true, result: { message: 'Company created', data: company } });
 
 });
 
