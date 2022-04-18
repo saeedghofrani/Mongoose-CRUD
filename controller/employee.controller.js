@@ -13,7 +13,7 @@ const _post = safeCall(async (request, response, _next) => {
 
     const data = { first_name, last_name, password, username } = request.body;
     await Employee.create(data);
-    return response.json({ path: request.originalUrl, success: true, result: 'Employee created' });
+    return response.status(201).json({ path: request.originalUrl, success: true, result: 'Employee created' });
 
 });
 

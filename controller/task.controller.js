@@ -13,7 +13,7 @@ const _post = safeCall(async (request, response, _next) => {
 
     const data = { title, description } = request.body;
     await Task.create(data);
-    return response.json({ path: request.originalUrl, success: true, result: 'Task created' });
+    return response.status(201).json({ path: request.originalUrl, success: true, result: 'Task created' });
 
 });
 

@@ -14,7 +14,7 @@ const _post = safeCall(async (request, response, _next) => {
 
     const { company_name, value } = request.body;
     const company = await createCompany(company_name, value);
-    return response.json({ path: request.originalUrl, success: true, result: { message: 'Company created', data: company } });
+    return response.status(201).json({ path: request.originalUrl, success: true, result: { message: 'Company created', data: company } });
 
 });
 
@@ -25,7 +25,7 @@ const _delete = safeCall(async (request, response, _next) => {
 
     dletedCompany ?
         response.json({ path: request.originalUrl, success: true, result: 'Company deleted' })
-        : response.json({ path: request.originalUrl, success: false, result: 'Company not found' });
+        : response.status(404).json({ path: request.originalUrl, success: false, result: 'Company not found' });
 });
 
 const _put = safeCall(async (request, response, _next) => {
