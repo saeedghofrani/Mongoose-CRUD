@@ -12,6 +12,7 @@
     "dotenv": "^16.0.0",
     "express": "~4.16.1",
     "jest": "^27.5.1",
+    "mongodb-memory-server": "^8.5.0",
     "mongoose": "^6.3.0",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.15"
